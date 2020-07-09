@@ -30,19 +30,17 @@ export class WeatherCard extends Component {
 
         return (
             <div style={weatherCardStyle}>
-                <p>{dayAbbreviation(dayOfTheWeek)}</p>
+                <p style={{fontSize: "2em"}}>{dayAbbreviation(dayOfTheWeek)}</p>
                 <FontAwesomeIcon icon={selectWeather(this.props.weather)} size="2x" />
-                <p>{this.props.low}/{this.props.high}</p>
+                <p>{this.props.low}º/{this.props.high}º</p>
             </div>
         )
     }
 }
 
 const weatherCardStyle = {
-    backgroundColor: "white",
-    width: "75px",
-    border: "white",
-    borderRadius: "3px",
+    backgroundColor: "grey",
+    width: "175px",
     padding: "15px",
     margin: "5px",
     textAlign: "center"

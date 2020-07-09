@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/layout/Header';
 import CurrentWeather from './components/CurrentWeather';
 import WeatherCard from './components/WeatherCard';
+import SearchBar from './components/SearchBar';
 // import backgroundImage from '../public/backgrounds/rain_background.jpg'
 
 class App extends Component {
@@ -71,8 +72,11 @@ class App extends Component {
   render(){
   return (
     <div className="App">
+      <SearchBar />
+      <div className="todayContainer">
         <Header />
         <CurrentWeather weather={this.state} />
+        </div>
         <div className="weatherCardContainer">
           <WeatherCard
             style={weatherCardStyle} 
@@ -101,20 +105,6 @@ class App extends Component {
             weather={this.state.weatherInfo[4].weather} 
             high={this.state.weatherInfo[4].high} 
             low={this.state.weatherInfo[4].low}
-          />
-          <WeatherCard 
-            style={weatherCardStyle}  
-            day={this.state.weatherInfo[5].day} 
-            weather={this.state.weatherInfo[5].weather} 
-            high={this.state.weatherInfo[5].high} 
-            low={this.state.weatherInfo[5].low}
-          />
-          <WeatherCard 
-            style={weatherCardStyle}  
-            day={this.state.weatherInfo[6].day} 
-            weather={this.state.weatherInfo[6].weather} 
-            high={this.state.weatherInfo[6].high} 
-            low={this.state.weatherInfo[6].low}
           />
         </div>
     </div>

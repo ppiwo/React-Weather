@@ -5,13 +5,21 @@ body {
 .weatherCardContainer {
     display: flex;
     justify-content: center;
-}
-
-.App {
-    background-color: grey;
     width: fit-content;
     margin: auto;
+    padding: 10px;
+}
+
+.todayContainer {
+    background-color: grey;
+    width: 71.5%;
+    margin: auto;
     padding: 20px;
-    margin-top: 10%;
-    box-shadow: 0px 0px 30px 6px #0a0a0a;;
+    margin-top: 10px;
+}
+
+.searchBar {
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
 }
