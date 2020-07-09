@@ -1,21 +1,25 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
+import {selectWeather} from './WeatherCard';
+// import { faSun, faCloud, faCloudShowersHeavy } from "@fortawesome/free-solid-svg-icons";
 
 
 export class CurrentWeather extends Component {
     render() {
-        const sunny = <i className="fas fa-sun" style={{color: "#000000" }}></i>;
-        const currentWeatherInfo = this.props.weather;
-        console.log(this.props.weather.weatherInfo[0].id);
+        const todaysWeather = this.props.weather.weatherInfo[0].weather;
+        console.log(todaysWeather);
         return (
-            <div>
+            <div style={todaysWeatherStyle}>
+                <FontAwesomeIcon icon={selectWeather(todaysWeather)} size="6x" />
                 <h3>Current Temperature: {this.props.weather.weatherInfo[0].current}</h3>
-                <FontAwesomeIcon icon={faHome} />
             </div>
         )
     }
+}
+
+const todaysWeatherStyle = {
+    textAlign: 'center'
 }
 
 //PropTypes

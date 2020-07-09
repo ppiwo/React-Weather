@@ -1,0 +1,17 @@
+body {
+    background-image: url('images/backgrounds/rain_background.jpg');
+    background-size: cover;
+}
+.weatherCardContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.App {
+    background-color: grey;
+    width: fit-content;
+    margin: auto;
+    padding: 20px;
+    margin-top: 10%;
+    box-shadow: 0px 0px 30px 6px #0a0a0a;;
+}
