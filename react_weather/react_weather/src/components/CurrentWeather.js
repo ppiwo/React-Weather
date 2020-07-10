@@ -2,17 +2,24 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {selectWeather} from './WeatherCard';
-// import { faSun, faCloud, faCloudShowersHeavy } from "@fortawesome/free-solid-svg-icons";
 
 
 export class CurrentWeather extends Component {
     render() {
-        const todaysWeather = this.props.weather.weatherInfo[0].weather;
-        console.log(todaysWeather);
+
+        //Making sure all props are loaded before rendering
+        if (this.props.weather.current === undefined){
+            return <div />
+        }
+
+        const todaysWeather = this.props.weather.current;
+        console.log(todaysWeather.weather[0].id);
+
         return (
-            <div style={todaysWeatherStyle}>
-                <FontAwesomeIcon icon={selectWeather(todaysWeather)} size="6x" />
-                <h3>Current Temperature: {this.props.weather.weatherInfo[0].current}</h3>
+            <div>
+                
+                 <FontAwesomeIcon icon={selectWeather(todaysWeather.weather[0].id)} size="6x" />
+                <h3>Current Temperature: {todaysWeather.temp}</h3> 
             </div>
         )
     }
@@ -24,7 +31,9 @@ const todaysWeatherStyle = {
 
 //PropTypes
 CurrentWeather.propTypes = {
-    weather: PropTypes.object.isRequired
+    weather: PropTypes.array.isRequired
 }
+
+
 
 export default CurrentWeather

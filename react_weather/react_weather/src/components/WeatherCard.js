@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faCloud, faCloudShowersHeavy } from "@fortawesome/free-solid-svg-icons";
+import { faSun, faCloud, faCloudShowersHeavy, faBolt, faSnowflake } from "@fortawesome/free-solid-svg-icons";
 
 // Choosing appropriate image for each weather scenario
 export const selectWeather = (weather) => {
-    if (weather === 'sunny') return faSun;
-    if (weather === 'cloudy') return faCloud;
-    if (weather === 'rain') return faCloudShowersHeavy;
+    if (weather >= 200 && weather <= 232) return faBolt;
+    if (weather >= 300 && weather <= 531) return faCloudShowersHeavy;
+    if (weather >= 600 && weather <= 622) return faSnowflake;
+    if (weather >= 801) return faSnowflake;
+    else return faSun;
 }
 
 //Shortening days of the week to abbreviations
@@ -51,8 +53,8 @@ const weatherCardStyle = {
 WeatherCard.propTypes = {
     day: PropTypes.string.isRequired,
     weather: PropTypes.string.isRequired,
-    high: PropTypes.string.isRequired,
-    low: PropTypes.string.isRequired
+    high: PropTypes.number.isRequired,
+    low: PropTypes.number.isRequired
 }
 
 export default WeatherCard
