@@ -15,11 +15,7 @@ export const selectWeather = (weather) => {
 
 //Converts days from getDay() format (0-6) to string abbreviations
 export const dayAbbreviation = (day) => {
-    console.log('before ' + day)
-    day = convertUnixToDateTime(day)
-    console.log('after ' + day)
-    day = day.getDay();
-    console.log(day)
+    day = convertUnixToDateTime(day).getDay();
     if (day === 0) return 'Sun';
     if (day === 1) return 'Mon';
     if (day === 2) return 'Tue';
@@ -32,7 +28,7 @@ export const dayAbbreviation = (day) => {
 
 //Converts days from getDay() format (0-6) to string representations
 export const dayFull = (day) => {
-    console.log(day)
+    day = convertUnixToDateTime(day).getDay();
     if (day === 0) return 'Sunday';
     if (day === 1) return 'Monday';
     if (day === 2) return 'Tuesday';

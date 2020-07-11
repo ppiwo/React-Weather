@@ -29,7 +29,7 @@ class App extends Component {
   }
 
   render(){
-    if (this.state.weatherInfo.daily === undefined){
+    if (this.state.weatherInfo.daily === undefined || this.state.currentWeatherInfo.current.dt === undefined){
       return <div />
     }
   
@@ -46,13 +46,6 @@ class App extends Component {
 
          />
          </div>
-          <WeatherCard 
-            style={weatherCardStyle}  
-            day={dayAbbreviation(this.state.weatherInfo.daily[0].dt)} 
-            weather={this.state.weatherInfo.daily[0].weather[0].main} 
-            high={this.state.weatherInfo.daily[0].temp.max} 
-            low={this.state.weatherInfo.daily[0].temp.min}
-          />
           <WeatherCard 
             style={weatherCardStyle}  
             day={dayAbbreviation(this.state.weatherInfo.daily[1].dt)} 
@@ -73,6 +66,13 @@ class App extends Component {
             weather={this.state.weatherInfo.daily[3].weather[0].main} 
             high={this.state.weatherInfo.daily[3].temp.max} 
             low={this.state.weatherInfo.daily[3].temp.min}
+          />
+          <WeatherCard 
+            style={weatherCardStyle}  
+            day={dayAbbreviation(this.state.weatherInfo.daily[4].dt)} 
+            weather={this.state.weatherInfo.daily[4].weather[0].main} 
+            high={this.state.weatherInfo.daily[4].temp.max} 
+            low={this.state.weatherInfo.daily[4].temp.min}
           />
         </div>
   );
