@@ -13,7 +13,8 @@ class App extends Component {
     weatherInfo: 
     [],
     currentWeatherInfo:
-    []
+    [],
+    location: []
   }
 
   componentDidMount(){

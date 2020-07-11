@@ -18,7 +18,7 @@ export class CurrentWeather extends Component {
             <div>
                 <h2>{this.props.day}</h2>
                  <FontAwesomeIcon icon={selectWeather(this.props.weather)} size="6x" />
-                <h3>Current Temperature: {this.props.currentTemp}</h3> 
+                <h3>Current Temperature: {Math.round(this.props.currentTemp)}º</h3> 
                 <h4>As of {new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</h4>
             </div>
         )

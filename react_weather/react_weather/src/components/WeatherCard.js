@@ -51,7 +51,7 @@ export class WeatherCard extends Component {
                 <p style={{fontSize: "2em"}}>{this.props.day}</p>
                 <FontAwesomeIcon icon={selectWeather(this.props.weather)} size="2x" />
                 <p>{this.props.weather}</p>
-                <p>{this.props.low}º / {this.props.high}º</p>
+                <p>{Math.round(this.props.low)}º / {Math.round(this.props.high)}º</p>
             </div>
         )
     }
