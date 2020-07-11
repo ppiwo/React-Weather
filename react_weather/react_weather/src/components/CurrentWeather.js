@@ -1,25 +1,24 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {selectWeather} from './WeatherCard';
+import {selectWeather, dayFull} from './WeatherCard';
 
 
 export class CurrentWeather extends Component {
     render() {
 
         //Making sure all props are loaded before rendering
-        if (this.props.weather.current === undefined){
-            return <div />
-        }
+        // if (this.props.day === undefined){
+        //     return <div />
+        // }
 
-        const todaysWeather = this.props.weather.current;
-        console.log(todaysWeather.weather[0].id);
+        // const todaysWeather = this.props.weather.current;
 
         return (
             <div>
-                
-                 <FontAwesomeIcon icon={selectWeather(todaysWeather.weather[0].id)} size="6x" />
-                <h3>Current Temperature: {todaysWeather.temp}</h3> 
+                <h2>{this.props.day}</h2>
+                 <FontAwesomeIcon icon={selectWeather(this.props.weather)} size="6x" />
+                <h3>Current Temperature: {this.props.currentTemp}</h3> 
             </div>
         )
     }
@@ -31,7 +30,7 @@ const todaysWeatherStyle = {
 
 //PropTypes
 CurrentWeather.propTypes = {
-    weather: PropTypes.array.isRequired
+    day: PropTypes.object.isRequired
 }
 
 

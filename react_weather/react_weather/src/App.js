@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/layout/Header';
 import CurrentWeather from './components/CurrentWeather';
-import WeatherCard from './components/WeatherCard';
+import {WeatherCard, dayAbbreviation, dayFull} from './components/WeatherCard';
 import SearchBar from './components/SearchBar';
 // import backgroundImage from '../public/backgrounds/rain_background.jpg'
 
@@ -15,12 +15,6 @@ class App extends Component {
     currentWeatherInfo:
     []
   }
-  //Making request to Open Weather Map API
-//   let makeRequest = (lat,long,exclude) => {
-//   axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + long + '&exclude=' + exclude +'&appid=' + process.env.REACT_APP_API_KEY)
-//   .then(res => this.setState({weatherInfo: res.data}))
-// }
-
 
   componentDidMount(){
     this.loadData();
@@ -35,22 +29,50 @@ class App extends Component {
   }
 
   render(){
-    if (!this.state.weatherInfo){
+    if (this.state.weatherInfo.daily === undefined){
       return <div />
     }
+  
   return (
     <div className="App">
       <SearchBar />
       <div className="todayContainer">
-        <Header /> 
-        <CurrentWeather weather={this.state.currentWeatherInfo} />
+        <CurrentWeather 
+       day={dayFull(this.state.currentWeatherInfo.current.dt)} 
+       weather={this.state.currentWeatherInfo.current.weather[0].main} 
+      //  high={} 
+      //  low={}
+       currentTemp={this.state.currentWeatherInfo.current.temp}
+
+         />
          </div>
           <WeatherCard 
             style={weatherCardStyle}  
-            day={this.convertUnixToDateTime(this.state.weatherInfo.daily[0].dt)} 
-            weather={this.state.weatherInfo[4].weather} 
-            high={this.state.weatherInfo[4].high} 
-            low={this.state.weatherInfo[4].low}
+            day={dayAbbreviation(this.state.weatherInfo.daily[0].dt)} 
+            weather={this.state.weatherInfo.daily[0].weather[0].main} 
+            high={this.state.weatherInfo.daily[0].temp.max} 
+            low={this.state.weatherInfo.daily[0].temp.min}
+          />
+          <WeatherCard 
+            style={weatherCardStyle}  
+            day={dayAbbreviation(this.state.weatherInfo.daily[1].dt)} 
+            weather={this.state.weatherInfo.daily[1].weather[0].main} 
+            high={this.state.weatherInfo.daily[1].temp.max} 
+            low={this.state.weatherInfo.daily[1].temp.min}
+          />
+          <WeatherCard 
+            style={weatherCardStyle}  
+            day={dayAbbreviation(this.state.weatherInfo.daily[2].dt)} 
+            weather={this.state.weatherInfo.daily[2].weather[0].main} 
+            high={this.state.weatherInfo.daily[2].temp.max} 
+            low={this.state.weatherInfo.daily[2].temp.min}
+          />
+          <WeatherCard 
+            style={weatherCardStyle}  
+            day={dayAbbreviation(this.state.weatherInfo.daily[3].dt)} 
+            weather={this.state.weatherInfo.daily[3].weather[0].main} 
+            high={this.state.weatherInfo.daily[3].temp.max} 
+            low={this.state.weatherInfo.daily[3].temp.min}
           />
         </div>
   );
@@ -67,7 +89,6 @@ const weatherCardStyle = {
 // Dates and times recieved from API are in UNIX format, use this function to convert to Date
 export let convertUnixToDateTime = (unix_timestamp) => {
   var date = new Date(unix_timestamp * 1000);
-  console.log(date)
   return date;
 }
 
