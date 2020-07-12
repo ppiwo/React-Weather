@@ -5,8 +5,10 @@ import {selectWeather, dayFull} from './WeatherCard';
 
 
 export class CurrentWeather extends Component {
-    render() {
+    state(){
 
+    }
+    render() {
         //Making sure all props are loaded before rendering
         // if (this.props.day === undefined){
         //     return <div />

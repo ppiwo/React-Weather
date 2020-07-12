@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './components/layout/Header';
 import CurrentWeather from './components/CurrentWeather';
 import {WeatherCard, dayAbbreviation, dayFull} from './components/WeatherCard';
 import SearchBar from './components/SearchBar';
-// import backgroundImage from '../public/backgrounds/rain_background.jpg'
 
 import axios from 'axios';
 
@@ -14,20 +12,32 @@ class App extends Component {
     [],
     currentWeatherInfo:
     [],
-    location: []
+    location: 
+      {
+      lat: 41.8781,
+      long: -87.6298
+      }
   }
 
   componentDidMount(){
+    console.log(this.state.location.lat)
     this.loadData();
   }
 
   loadData() {
-    axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=41.8781&lon=-87.6298&units=imperial&exclude=minutely,hourly,daily&appid=886705b4c1182eb1c69f28eb8c520e20')
+    axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.location.lat}&lon=${this.state.location.long}&units=imperial&exclude=minutely,hourly,daily&appid=886705b4c1182eb1c69f28eb8c520e20`)
   .then(res => this.setState({currentWeatherInfo: res.data}))
 
-  axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=41.8781&lon=-87.6298&units=imperial&exclude=minutely,hourly,current&appid=886705b4c1182eb1c69f28eb8c520e20')
+  axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.location.lat}&lon=${this.state.location.long}&units=imperial&exclude=minutely,hourly,current&appid=886705b4c1182eb1c69f28eb8c520e20`)
   .then(res => this.setState({weatherInfo: res.data}))
   }
+
+  loadLocation = (location) => {
+    console.log('bye')
+    axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyDXOKuD4KqV7u_1AY295qwmTYvbotatIMM`)
+    .then(res => this.setState({location: res.data.results[0].geometry.location}));
+  }
+
 
   render(){
     if (this.state.weatherInfo.daily === undefined || this.state.currentWeatherInfo.current.dt === undefined){
@@ -36,23 +46,21 @@ class App extends Component {
   
   return (
     <div className="App">
-      <SearchBar />
+      <SearchBar loadLocation={this.loadLocation}/>
       <div className="todayContainer">
         <CurrentWeather 
-       day={dayFull(this.state.currentWeatherInfo.current.dt)} 
-       weather={this.state.currentWeatherInfo.current.weather[0].main} 
-      //  high={} 
-      //  low={}
-       currentTemp={this.state.currentWeatherInfo.current.temp}
-
-         />
-         </div>
+        day={dayFull(this.state.currentWeatherInfo.current.dt)} 
+        weather={this.state.currentWeatherInfo.current.weather[0].main} 
+        currentTemp={this.state.currentWeatherInfo.current.temp}
+        />
+      </div>
           <WeatherCard 
             style={weatherCardStyle}  
             day={dayAbbreviation(this.state.weatherInfo.daily[1].dt)} 
             weather={this.state.weatherInfo.daily[1].weather[0].main} 
             high={this.state.weatherInfo.daily[1].temp.max} 
             low={this.state.weatherInfo.daily[1].temp.min}
+            location={this.state.location}
           />
           <WeatherCard 
             style={weatherCardStyle}  
@@ -79,9 +87,6 @@ class App extends Component {
   );
 }
 }
-
-
-// console.log({this.state})
 
 const weatherCardStyle = {
   background: 'lightblue'
