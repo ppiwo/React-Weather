@@ -59,9 +59,8 @@ export class WeatherCard extends Component {
 
 const weatherCardStyle = {
     backgroundColor: "grey",
-    width: "175px",
-    padding: "15px",
-    margin: "5px",
+    width: "30%",
+    margin: "1%",
     textAlign: "center"
 
 }

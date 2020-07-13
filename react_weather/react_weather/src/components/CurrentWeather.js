@@ -9,19 +9,13 @@ export class CurrentWeather extends Component {
 
     }
     render() {
-        //Making sure all props are loaded before rendering
-        // if (this.props.day === undefined){
-        //     return <div />
-        // }
-
-        // const todaysWeather = this.props.weather.current;
 
         return (
             <div>
                 <h2>{this.props.day}</h2>
+                <h4>As of {new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</h4>
                  <FontAwesomeIcon icon={selectWeather(this.props.weather)} size="6x" />
                 <h3>Current Temperature: {Math.round(this.props.currentTemp)}º</h3> 
-                <h4>As of {new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</h4>
             </div>
         )
     }

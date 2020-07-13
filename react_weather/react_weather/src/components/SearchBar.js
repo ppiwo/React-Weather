@@ -18,7 +18,7 @@ export class SearchBar extends Component {
 
     handleSubmit(event) {
         //make axios call to Geolocation API
-        console.log('hi')
+        console.log('handleSubmit')
         event.preventDefault();
         this.props.loadLocation(this.state.location);
       }
@@ -29,7 +29,7 @@ export class SearchBar extends Component {
             <div className="searchBar">
                 <form onSubmit={this.handleSubmit}>
                     <input
-                    style={{width: "788px"}} 
+                    className="searchInput"
                     type="text"
                     name="city"
                     placeholder="Enter a city..."
@@ -40,7 +40,6 @@ export class SearchBar extends Component {
                     type="submit" 
                     value="Submit"
                     className="btn"
-                    style={{flex: "1"}}
                     />
                 </form>
             </div>
