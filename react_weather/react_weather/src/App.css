@@ -1,31 +1,168 @@
 body {
-    background-image: url('images/backgrounds/rain_background.jpg');
-}
-.App {
-    width: 100%;
-}
-.weatherCardContainer {
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    padding: 1%;
-    width: 71.5%;
+    background: #602C5B;
+    background: -webkit-radial-gradient(center, #602C5B, #544978);
+    background: -moz-radial-gradient(center, #602C5B, #544978);
+    background: radial-gradient(ellipse at center, #602C5B, #544978);
+    color: #e6e5e8;
 }
 
-.todayContainer {
-    background-color: grey;
-    width: 71.5%;
-    margin: auto;
-    padding: 2%, 0%, 2%, 0%;
-    margin-top: 1%;
-    text-align: center;
+/* Mobile display settings */
+@media only screen and (max-width: 500px) {
+    .weatherCardContainer {
+        display: table;
+    }
+
+    .weatherCardContainer {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        padding: 1%;
+        width: 71.5%;
+    }
+
+    .weatherCardContainer {
+        display: table;
+    }
+
+
+    .todayContainer {
+        background-color: #282C34;
+        width: 71.5%;
+        margin: auto;
+        padding: 2%;
+        text-align: center;
+        box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.24);
+    }
+
+    .searchBar {
+        margin: 2% 0% 2% 0%;
+        text-align: center;
+    }
+
+    .searchBar .MuiInputBase-input {
+        color: #8a85ff;
+    }
+
+
+
+    .weatherInfoColumns {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .weatherInfoColumns h4 {
+        flex: 0 50%;
+        margin-top: 1px;
+        margin-bottom: 1px;
+    }
+
+    h4, h3 {
+        margin: 0;
+    }
+
+    h2 {
+        margin-bottom: 0;
+    }
+
+    .currentTime {
+        margin-bottom: 50px;
+    }
+
+    .feelsLike {
+        margin-bottom: 50px;
+    }
+
+    .searchInput {
+        padding:5px 15px;
+    }
+
+    div .col {
+        display: table-cell;
+        text-align: center;
+    }
+
+    .row {
+        display: table-row;
+    }
 }
 
-.searchBar {
-    margin-top: 5%;
-    text-align: center;
+/* Desktop and tablet display settings */
+@media only screen and (min-width: 500px) {
+    body {
+        background: #602C5B;
+        background: -webkit-radial-gradient(center, #602C5B, #544978);
+        background: -moz-radial-gradient(center, #602C5B, #544978);
+        background: radial-gradient(ellipse at center, #602C5B, #544978);
+        color: #e6e5e8;
+    }
+
+    .weatherCardContainer {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        padding: 1%;
+        width: 71.5%;
+    }
+
+    .todayContainer {
+        background-color: #282C34;
+        width: 71.5%;
+        margin: auto;
+        padding: 2%;
+        text-align: center;
+        box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.24);
+    }
+
+    .searchBar {
+        margin: 2% 0% 2% 0%;
+        text-align: center;
+    }
+
+    .searchBar .MuiInputBase-input {
+        color: #8a85ff;
+    }
+
+
+
+    .weatherInfoColumns {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .weatherInfoColumns h4 {
+        flex: 0 50%;
+        margin-top: 1px;
+        margin-bottom: 1px;
+    }
+
+    h4, h3 {
+        margin: 0;
+    }
+
+    h2 {
+        margin-bottom: 0;
+    }
+
+    .currentTime {
+        margin-bottom: 50px;
+    }
+
+    .feelsLike {
+        margin-bottom: 50px;
+    }
+
+    .searchInput {
+        padding:5px 15px;
+    }
+
+    div .col {
+        display: table-cell;
+        text-align: center;
+    }
+
+    .row {
+        display: table-row;
+    }
 }
 
-.searchInput {
-    width: 64%;
-}
+  

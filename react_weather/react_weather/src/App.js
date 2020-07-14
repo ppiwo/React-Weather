@@ -35,7 +35,6 @@ class App extends Component {
 
   axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.location.lat}&lon=${this.state.location.lng}&units=imperial&exclude=minutely,hourly,current&appid=886705b4c1182eb1c69f28eb8c520e20`)
   .then(res => this.setState({weatherInfo: res.data}))
-  .then(console.log('set state'))
 
   }
 
@@ -62,13 +61,13 @@ class App extends Component {
         currentTemp={this.state.currentWeatherInfo.current.temp}
         location={this.state.location}
         cityState={this.state.cityState}
-        // feelsLike={this.state.currentWeatherInfo.current.feels_like}
-        // high{this.state.weatherInfo.daily[0].temp.max}
-        // low={this.state.weatherInfo.daily[0].temp.min}
-        // Pressure{this.state.currentWeatherInfo.current.pressure}
-        // humidity{this.state.currentWeatherInfo.current.humidity}
-        // sunRise{this.state.currentWeatherInfo.current.sunrise}
-        // sunSet{this.state.currentWeatherInfo.current.sunset}
+        feelsLike={this.state.currentWeatherInfo.current.feels_like}
+        high={this.state.weatherInfo.daily[0].temp.max}
+        low={this.state.weatherInfo.daily[0].temp.min}
+        pressure={this.state.currentWeatherInfo.current.pressure}
+        humidity={this.state.currentWeatherInfo.current.humidity}
+        sunRise={this.state.currentWeatherInfo.current.sunrise}
+        sunSet={this.state.currentWeatherInfo.current.sunset}
         />
       </div>
       <div className="weatherCardContainer">
@@ -106,6 +105,12 @@ class App extends Component {
 // Dates and times recieved from API are in UNIX format, use this function to convert to Date
 export let convertUnixToDateTime = (unix_timestamp) => {
   var date = new Date(unix_timestamp * 1000);
+  return date;
+}
+
+export let convertUnixToTime = (unix_timestamp) => {
+  var date = new Date(unix_timestamp * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+  console.log(date)
   return date;
 }
 

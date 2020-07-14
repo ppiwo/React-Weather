@@ -42,27 +42,75 @@ export const dayFull = (day) => {
 
 export class WeatherCard extends Component {
 
+    constructor(){
+        super();
+        this.state = {
+            width: window.innerWidth,
+    };
+}
+
+    componentWillMount() {
+        window.addEventListener('resize', this.handleWindowSizeChange);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleWindowSizeChange);
+    }
+
+    handleWindowSizeChange = () => {
+        this.setState({width: window.innerWidth});
+    }
+
     render() {
-        // Assigning passed prop to a local variable
+        const {width} = this.state;
+        const isMobile = width <= 500;
         const dayOfTheWeek = this.props.day;
 
+        if (isMobile) {
+            return(
+                <div style={weatherCardStyleMobile}>
+                    <div className='row'>
+                        <div className='col'>
+                            <p style={{fontSize: "1em"}}>{this.props.day}</p>
+                        </div>
+                        <div className='col'>
+                            <FontAwesomeIcon icon={selectWeather(this.props.weather)} size="1x" />
+                        </div>
+                        <div className='col'>
+                        <p>{Math.round(this.props.low)}º / {Math.round(this.props.high)}º</p>
+                        </div>
+                    </div>
+                </div>
+            );
+        }else{
         return (
             <div style={weatherCardStyle}>
                 <p style={{fontSize: "2em"}}>{this.props.day}</p>
                 <FontAwesomeIcon icon={selectWeather(this.props.weather)} size="2x" />
                 <p>{this.props.weather}</p>
-                <p>{Math.round(this.props.low)}º / {Math.round(this.props.high)}º</p>
+                <p style={{textSize: '1em'}}>{Math.round(this.props.low)}º / {Math.round(this.props.high)}º</p>
             </div>
         )
     }
 }
+}
 
 const weatherCardStyle = {
-    backgroundColor: "grey",
+    backgroundColor: "#282C34",
+    color: "#e6e5e8",
     width: "30%",
     margin: "1%",
-    textAlign: "center"
+    textAlign: "center",
+    borderRadius: "3px",
+    boxShadow: '0 0 12px 1px rgba(0, 0, 0, 0.13)'
 
+}
+
+const weatherCardStyleMobile = {
+    display: 'table',
+    tableLayout: 'fixed',
+    width: '100%',
+    margin: 'auto'
 }
 
 //PropTypes

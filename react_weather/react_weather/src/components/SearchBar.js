@@ -1,12 +1,45 @@
 import React, { Component } from 'react';
-import loadData from '../App';
+import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import InputBase from "@material-ui/core/InputBase";
+import Divider from "@material-ui/core/Divider";
+import IconButton from "@material-ui/core/IconButton";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+
 
 import axios from 'axios';
+
+const styles = theme => ({
+    root: {
+        background: '#282C34',
+        padding: "2px 4px",
+        display: "flex",
+         alignItems: "center",
+         width: '75%',
+        margin: 'auto'
+    },
+    input: {
+      marginLeft: theme.spacing(1),
+      flex: 1,
+      color: '#e6e5e8'
+    },
+    iconButton: {
+      padding: 10,
+      color: '#8a85ff'
+    },
+    divider: {
+      height: 28,
+      margin: 4,
+      background: '#e6e5e8'
+    }
+  });
 
 export class SearchBar extends Component {
     constructor(props){
         super(props);
-        this.state = {location: 'ffhicago'};
+        this.state = {
+            location: '',
+        };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,45 +58,35 @@ export class SearchBar extends Component {
 
 
     render() {
+        const { classes } = this.props;
         return (
             <div className="searchBar">
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                    className="searchInput"
-                    type="text"
-                    name="city"
+                <Paper 
+                onSubmit={this.handleSubmit} 
+                component="form" 
+                className={classes.root}
+                >
+                <InputBase
+                    className={classes.input}
                     placeholder="Enter a city..."
+                    inputProps={{ "aria-label": "Enter a city..." }}
                     value = {this.state.location}
                     onChange={this.handleChange}
-                    />
-                    <input
-                    style={buttonStyle}
-                    variant="info"
+                />
+                <Divider className={classes.divider} orientation="vertical" />
+                <IconButton
+                    color="primary"
+                    className={classes.iconButton}
+                    aria-label="directions"
                     type="submit" 
                     value="Submit"
-                    className="btn"
-                    />
-                </form>
-            </div>
+                >
+                    <ArrowForwardIcon />
+                </IconButton>
+                </Paper>
+            </div> 
         )
     }
 }
 
-const buttonStyle = {
-    // boxShadow: '0px 1px 0px 0px #f0f7fa',
-	background:'linear-gradient(to bottom, #33bdef 5%, #019ad2 100%)',
-	backgroundColor:'#33bdef',
-	borderRadius:'6px',
-	border:'1px solid #057fd0',
-	display:'inline-block',
-	cursor:'pointer',
-	color:'#ffffff',
-	fontFamily:'Arial',
-	fontSize:'17px',
-	fontWeight:'bold',
-	padding:'10px 24px',
-	textDecoration:'none',
-	// textShadow:'0px -1px 0px #5b6178'
-}
-
-export default SearchBar
+export default withStyles(styles)(SearchBar);
