@@ -13,10 +13,11 @@ class App extends Component {
     currentWeatherInfo:
     [],
     location: 
-      {
+    {
       lat: 41.8781,
-      lng: -87.6298
+      lng: -87.6298,
       },
+      cityState: 'Chicago, IL, USA'
   }
 
   componentDidMount(){
@@ -41,7 +42,7 @@ class App extends Component {
   loadLocation = (location) => {
     console.log('load location')
     axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyDXOKuD4KqV7u_1AY295qwmTYvbotatIMM`)
-    .then(res => this.setState({location: res.data.results[0].geometry.location}));
+    .then(res => this.setState({location: res.data.results[0].geometry.location, cityState: res.data.results[0].formatted_address}));
     this.loadData();
   }
 
@@ -60,6 +61,14 @@ class App extends Component {
         weather={this.state.currentWeatherInfo.current.weather[0].main} 
         currentTemp={this.state.currentWeatherInfo.current.temp}
         location={this.state.location}
+        cityState={this.state.cityState}
+        // feelsLike={this.state.currentWeatherInfo.current.feels_like}
+        // high{this.state.weatherInfo.daily[0].temp.max}
+        // low={this.state.weatherInfo.daily[0].temp.min}
+        // Pressure{this.state.currentWeatherInfo.current.pressure}
+        // humidity{this.state.currentWeatherInfo.current.humidity}
+        // sunRise{this.state.currentWeatherInfo.current.sunrise}
+        // sunSet{this.state.currentWeatherInfo.current.sunset}
         />
       </div>
       <div className="weatherCardContainer">
