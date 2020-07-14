@@ -36,7 +36,9 @@ export class SearchBar extends Component {
                     value = {this.state.location}
                     onChange={this.handleChange}
                     />
-                    <input 
+                    <input
+                    style={buttonStyle}
+                    variant="info"
                     type="submit" 
                     value="Submit"
                     className="btn"
@@ -45,6 +47,23 @@ export class SearchBar extends Component {
             </div>
         )
     }
+}
+
+const buttonStyle = {
+    // boxShadow: '0px 1px 0px 0px #f0f7fa',
+	background:'linear-gradient(to bottom, #33bdef 5%, #019ad2 100%)',
+	backgroundColor:'#33bdef',
+	borderRadius:'6px',
+	border:'1px solid #057fd0',
+	display:'inline-block',
+	cursor:'pointer',
+	color:'#ffffff',
+	fontFamily:'Arial',
+	fontSize:'17px',
+	fontWeight:'bold',
+	padding:'10px 24px',
+	textDecoration:'none',
+	// textShadow:'0px -1px 0px #5b6178'
 }
 
 export default SearchBar

@@ -11,6 +11,7 @@ export class CurrentWeather extends Component {
     render() {
 
         return (
+            //add: feels like, low, high, wind, chance of percip, air quality index, pressure, visibility, humidity, sun rise sun set
             <div>
                 <h2>{this.props.day}</h2>
                 <h4>As of {new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</h4>
@@ -19,10 +20,6 @@ export class CurrentWeather extends Component {
             </div>
         )
     }
-}
-
-const todaysWeatherStyle = {
-    textAlign: 'center'
 }
 
 //PropTypes
