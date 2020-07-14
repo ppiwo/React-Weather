@@ -15,7 +15,7 @@ const styles = theme => ({
         padding: "2px 4px",
         display: "flex",
          alignItems: "center",
-         width: '75%',
+         width: '92%',
         margin: 'auto'
     },
     input: {
@@ -68,8 +68,8 @@ export class SearchBar extends Component {
                 >
                 <InputBase
                     className={classes.input}
-                    placeholder="Enter a city..."
-                    inputProps={{ "aria-label": "Enter a city..." }}
+                    placeholder="Search City or Zip Code"
+                    inputProps={{ "aria-label": "Search City or Zip Code" }}
                     value = {this.state.location}
                     onChange={this.handleChange}
                 />

@@ -4,6 +4,7 @@ body {
     background: -moz-radial-gradient(center, #602C5B, #544978);
     background: radial-gradient(ellipse at center, #602C5B, #544978);
     color: #e6e5e8;
+    height: 100vw;
 }
 
 /* Mobile display settings */
@@ -12,22 +13,10 @@ body {
         display: table;
     }
 
-    .weatherCardContainer {
-        display: flex;
-        justify-content: center;
-        margin: auto;
-        padding: 1%;
-        width: 71.5%;
-    }
-
-    .weatherCardContainer {
-        display: table;
-    }
-
 
     .todayContainer {
         background-color: #282C34;
-        width: 71.5%;
+        width: 90%;
         margin: auto;
         padding: 2%;
         text-align: center;
