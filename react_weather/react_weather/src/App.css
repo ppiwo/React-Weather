@@ -4,7 +4,7 @@ body {
     background: -moz-radial-gradient(center, #602C5B, #544978);
     background: radial-gradient(ellipse at center, #602C5B, #544978);
     color: #e6e5e8;
-    height: 100vw;
+    height: 100vh;
 }
 
 /* Mobile display settings */
