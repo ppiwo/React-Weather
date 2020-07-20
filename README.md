@@ -1,6 +1,6 @@
 #  :globe_with_meridians: React Weather
 
-A simple weather webapp created using the React library for Javascript. 
+A simple weather web app created using the React library for Javascript. 
 
 ## Technologies Used
 
