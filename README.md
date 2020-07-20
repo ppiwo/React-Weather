@@ -23,7 +23,7 @@ Desktop | Mobile
 ## Running This Project
 * Clone this repository 
 ``` 
-git clone https://github.com/ppiwo/ReactWeather.git 
+https://github.com/ppiwo/React-Weather.git 
 ```
 * navigate into the root folder ```cd react_weather```
 * Install all modules by running ```npm install```
