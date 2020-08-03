@@ -5,7 +5,6 @@ body {
     background: radial-gradient(ellipse at center, #602C5B, #544978);
     color: #e6e5e8;
     margin: 1em;
-    max-height: fit-content;
 }
 
 /* Mobile display settings */
