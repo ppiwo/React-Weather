@@ -6,6 +6,7 @@ import {
   dayAbbreviation,
   dayFull,
 } from './components/WeatherCard';
+import Header from './components/layout/Header'
 import SearchBar from './components/SearchBar';
 
 import axios from 'axios';
@@ -64,6 +65,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <Header />
         <SearchBar loadLocation={this.loadLocation} />
         <div className="todayContainer">
           <CurrentWeather
