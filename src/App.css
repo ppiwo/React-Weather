@@ -1,10 +1,7 @@
 body {
-    background: #602C5B;
-    background: -webkit-radial-gradient(center, #602C5B, #544978);
-    background: -moz-radial-gradient(center, #602C5B, #544978);
-    background: radial-gradient(ellipse at center, #602C5B, #544978);
     color: #e6e5e8;
     margin: 1em;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* Mobile display settings */
@@ -15,12 +12,10 @@ body {
 
 
     .todayContainer {
-        background-color: #282C34;
         width: 90%;
         margin: auto;
         padding: 2%;
         text-align: center;
-        box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.24);
     }
 
     .searchBar {
