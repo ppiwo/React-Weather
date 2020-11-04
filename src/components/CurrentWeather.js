@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { selectWeather } from './WeatherCard';
 
 export class CurrentWeather extends Component {
   state() {}

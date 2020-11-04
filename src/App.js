@@ -6,19 +6,15 @@ import {
   dayAbbreviation,
   dayFull,
 } from './components/WeatherCard';
-import Header from './components/layout/Header'
 import SearchBar from './components/SearchBar';
-import HourCards from './components/HourCards';
-
-import Header from './components/layout/Header'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import HourCards from './components/HourCards'
 
 import axios from 'axios';
 
 class App extends Component {
   state = {
     weatherInfo: [],
-    currentWeatherInfo: [],
+    hourlyInfo: [],
     location: {
       lat: 41.8781,
       lng: -87.6298,
@@ -38,10 +34,10 @@ class App extends Component {
       .then((res) => this.setState({ currentWeatherInfo: res.data }));
 
     axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.location.lat}&lon=${this.state.location.lng}&units=imperial&exclude=minutely,hourly,current&appid=886705b4c1182eb1c69f28eb8c520e20`
-      )
-      .then((res) => this.setState({ weatherInfo: res.data }));
+    .get(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.location.lat}&lon=${this.state.location.lng}&units=imperial&exclude=minutely&appid=886705b4c1182eb1c69f28eb8c520e20`
+    )
+    .then((res) => this.setState({ weatherInfo: res.data }));
   }
 
   loadLocation = (location) => {
@@ -69,13 +65,12 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header />
         <SearchBar loadLocation={this.loadLocation} />
-        <HourCards />
         <div className="todayContainer">
+          <HourCards weatherData={this.state.weatherInfo.hourly} />
           <CurrentWeather
             day={dayFull(this.state.currentWeatherInfo.current.dt)}
-            weatherIcon={this.state.currentWeatherInfo.current.weather[0].icon}
+            weather={this.state.currentWeatherInfo.current.weather[0].main}
             currentTemp={this.state.currentWeatherInfo.current.temp}
             location={this.state.location}
             cityState={this.state.cityState}
