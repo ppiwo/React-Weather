@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Navbar from './Navbar';
+import './Header.css';
 
 export class Header extends Component {
     render() {
         return (
             <div>
-                <h2 style={headerStyle}>React Weather</h2>
+                <Navbar />
             </div>
         )
     }

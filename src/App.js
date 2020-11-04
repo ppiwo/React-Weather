@@ -7,6 +7,10 @@ import {
   dayFull,
 } from './components/WeatherCard';
 import SearchBar from './components/SearchBar';
+import HourCards from './components/HourCards';
+
+import Header from './components/layout/Header'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import axios from 'axios';
 
@@ -64,11 +68,13 @@ class App extends Component {
 
     return (
       <div className="App">
+        <Header />
         <SearchBar loadLocation={this.loadLocation} />
+        <HourCards />
         <div className="todayContainer">
           <CurrentWeather
             day={dayFull(this.state.currentWeatherInfo.current.dt)}
-            weather={this.state.currentWeatherInfo.current.weather[0].main}
+            weatherIcon={this.state.currentWeatherInfo.current.weather[0].icon}
             currentTemp={this.state.currentWeatherInfo.current.temp}
             location={this.state.location}
             cityState={this.state.cityState}
