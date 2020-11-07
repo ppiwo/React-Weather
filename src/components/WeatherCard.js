@@ -68,7 +68,6 @@ export class WeatherCard extends Component {
   render() {
     const { width } = this.state;
     const isMobile = width <= 500;
-    const dayOfTheWeek = this.props.day;
 
     if (isMobile) {
       return (
@@ -125,7 +124,7 @@ const weatherCardStyleMobile = {
 
 //PropTypes
 WeatherCard.propTypes = {
-  day: PropTypes.number.isRequired,
+  // day: PropTypes.number.isRequired,
   weather: PropTypes.string.isRequired,
   high: PropTypes.number.isRequired,
   low: PropTypes.number.isRequired,

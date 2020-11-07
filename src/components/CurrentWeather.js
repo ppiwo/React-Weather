@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 export class CurrentWeather extends Component {
-  state() {}
+  constructor() {
+    super();
+    this.state = { };
+  }
   render() {
     return (
       <div>
-        <div className="icon-wrapper">
-          <img src={`http://openweathermap.org/img/wn/${this.props.weatherIcon}@2x.png`} />
-        </div>
-        <h3>{Math.round(this.props.currentTemp)}º</h3>
-        <h4>{this.props.cityState.split(',', 2)}</h4>
-        {/* <h2>{this.props.day}</h2> */}
-        {/* <h4 className="feelsLike">
-          Feels like: {Math.round(this.props.feelsLike)}º{' '}
-        </h4> */}
-        {/* <div className="weatherInfoColumns">
-          <h4>Low {Math.round(this.props.low)}º</h4>
-          <h4>High {Math.round(this.props.high)}º</h4> */}
-          {/* <h4>Pressure: {this.props.pressure} hPa</h4> */}
-          {/* <h4>Humidity: {this.props.humidity}%</h4> */}
-          {/* <h4>Sun Rise: {convertUnixToTime(this.props.sunRise)}</h4> */}
-          {/* <h4>Sun Set: {convertUnixToTime(this.props.sunSet)}</h4> */}
-        {/* </div> */}
+          <Container>
+            <Row className="justify-content-center text-center">
+                <Col className="city-wrapper" xs={12}><h4>{this.props.cityState.split(',', 2)}</h4></Col>
+                <Col className="today-wrapper" xs={12}><h2>Today</h2></Col>
+                <Col className="current-temp-wrapper" xs={12}><h3>{Math.round(this.props.currentTemp)}º</h3></Col>
+                <Col className="feels-like-wrapper" xs={12}>Feels like: {Math.round(this.props.feelsLike)}º{' '}</Col>
+          </Row>
+        </Container>
       </div>
     );
   }
@@ -30,7 +26,7 @@ export class CurrentWeather extends Component {
 
 //PropTypes
 CurrentWeather.propTypes = {
-  day: PropTypes.object.isRequired,
+  // day: PropTypes.object.isRequired,
 };
 
 export default CurrentWeather;

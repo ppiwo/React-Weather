@@ -11,7 +11,7 @@ export default function HourCard(props) {
         <Container className="hour-card-wrapper">
             <Row className="justify-content-center">
                 <Col className="hour-card-time px-0 py-1" xs={12}>{props.time}</Col>
-                <Col className="hour-card-img px-0 py-1" xs={12}><img src={`http://openweathermap.org/img/wn/${props.icon}.png`} /></Col>
+                <Col className="hour-card-img px-0 py-1" xs={12}><img src={`http://openweathermap.org/img/wn/${props.icon}.png`} alt="weather icon"/></Col>
                 <Col className="hour-card-temp px-0 py-1" xs={12}>{tempRounded}&deg;</Col>
             </Row>
         </Container>

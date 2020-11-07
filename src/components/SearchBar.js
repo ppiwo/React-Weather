@@ -6,8 +6,6 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
-import axios from 'axios';
-
 const styles = (theme) => ({
   root: {
     background: '#282C34',
@@ -35,7 +33,7 @@ const styles = (theme) => ({
 
 export class SearchBar extends Component {
   constructor(props) {
-    super(props);
+    super();
     this.state = {
       location: '',
     };

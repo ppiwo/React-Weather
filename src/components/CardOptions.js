@@ -7,11 +7,10 @@ import Col from 'react-bootstrap/Col'
 export default function CardOptions(props) {
     
     return (
-        <Container>
-            <Row>
-                <Col><a href="#" title="Hourly forecast" onClick={props.hourHandler}>Hourly</a></Col>
-                <Col><a href="#" title="Tomorrow's forecast" onClick={props.tomorrowHandler}>Tomorrow</a></Col>
-                <Col><a href="#" title="Week forecast" onClick={props.weekHandler}>Week</a></Col>
+        <Container fluid='xs'>
+            <Row className="justify-content-start text-left">
+                <Col xs={2}><button onClick={props.hourHandler}>Today</button></Col>
+                <Col xs={2}><button onClick={props.weekHandler}>Tomorrow</button></Col>
             </Row>
         </Container>
     )

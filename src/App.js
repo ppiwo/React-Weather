@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import CurrentWeather from './components/CurrentWeather';
 import {
-  WeatherCard,
-  dayAbbreviation,
-  dayFull,
+  WeatherCard
 } from './components/WeatherCard';
 import SearchBar from './components/SearchBar';
 import RenderCards from './components/RenderCards'
@@ -22,7 +20,7 @@ class App extends Component {
       lng: -87.6298,
     },
     cityState: 'Chicago, IL, USA',
-    cardOption: 'hourly'
+    cardOption: 'week'
   };
 
   componentDidMount() {
@@ -58,7 +56,6 @@ class App extends Component {
   };
 
   hourlyOptionHandler = () => this.setState({cardOption: 'hourly'})
-  tomorrowOptionHandler = () => this.setState({cardOption: 'tomorrow'})
   weekOptionHandler = () => this.setState({cardOption: 'week'})
 
   render() {
@@ -72,11 +69,8 @@ class App extends Component {
     return (
       <div className="App">
         <SearchBar loadLocation={this.loadLocation} />
-        <div className="todayContainer">
-          <CardOptions hourHandler={this.hourlyOptionHandler} tomorrowHandler={this.tomorrowOptionHandler} weekHandler={this.weekOptionHandler}/>
-          <RenderCards weatherData={this.state.weatherInfo} renderOption={this.state.cardOption} time={new Date} />
-          <CurrentWeather
-            day={dayFull(this.state.currentWeatherInfo.current.dt)}
+        <CurrentWeather
+            // day={dayFull(this.state.currentWeatherInfo.current.dt)}
             weather={this.state.currentWeatherInfo.current.weather[0].main}
             currentTemp={this.state.currentWeatherInfo.current.temp}
             location={this.state.location}
@@ -89,29 +83,32 @@ class App extends Component {
             sunRise={this.state.currentWeatherInfo.current.sunrise}
             sunSet={this.state.currentWeatherInfo.current.sunset}
           />
+        <div className="todayContainer">
+          <CardOptions hourHandler={this.hourlyOptionHandler} weekHandler={this.weekOptionHandler}/>
+          <RenderCards weatherData={this.state.weatherInfo} renderOption={this.state.cardOption} time={new Date()} />
         </div>
         <div className="weatherCardContainer">
           <WeatherCard
-            day={dayAbbreviation(this.state.weatherInfo.daily[1].dt)}
+            // day={dayAbbreviation(this.state.weatherInfo.daily[1].dt)}
             weather={this.state.weatherInfo.daily[1].weather[0].main}
             high={this.state.weatherInfo.daily[1].temp.max}
             low={this.state.weatherInfo.daily[1].temp.min}
             location={this.state.location}
           />
           <WeatherCard
-            day={dayAbbreviation(this.state.weatherInfo.daily[2].dt)}
+            // day={dayAbbreviation(this.state.weatherInfo.daily[2].dt)}
             weather={this.state.weatherInfo.daily[2].weather[0].main}
             high={this.state.weatherInfo.daily[2].temp.max}
             low={this.state.weatherInfo.daily[2].temp.min}
           />
           <WeatherCard
-            day={dayAbbreviation(this.state.weatherInfo.daily[3].dt)}
+            // day={dayAbbreviation(this.state.weatherInfo.daily[3].dt)}
             weather={this.state.weatherInfo.daily[3].weather[0].main}
             high={this.state.weatherInfo.daily[3].temp.max}
             low={this.state.weatherInfo.daily[3].temp.min}
           />
           <WeatherCard
-            day={dayAbbreviation(this.state.weatherInfo.daily[4].dt)}
+            // day={dayAbbreviation(this.state.weatherInfo.daily[4].dt)}
             weather={this.state.weatherInfo.daily[4].weather[0].main}
             high={this.state.weatherInfo.daily[4].temp.max}
             low={this.state.weatherInfo.daily[4].temp.min}
