@@ -1,0 +1,11 @@
+.hour-card-wrapper {
+    background-color: grey;
+    margin: 5px;
+    border: 0px solid grey;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.hour-card-time {
+    text-transform: uppercase;
+}

@@ -8,6 +8,7 @@ import {
 } from './components/WeatherCard';
 import SearchBar from './components/SearchBar';
 import HourCards from './components/HourCards'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import axios from 'axios';
 
@@ -41,7 +42,6 @@ class App extends Component {
   }
 
   loadLocation = (location) => {
-    console.log('load location');
     axios
       .get(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyDXOKuD4KqV7u_1AY295qwmTYvbotatIMM`
@@ -127,7 +127,6 @@ export let convertUnixToTime = (unix_timestamp) => {
     minute: 'numeric',
     hour12: true,
   });
-  console.log(date);
   return date;
 };
 

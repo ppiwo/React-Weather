@@ -50,7 +50,6 @@ export class SearchBar extends Component {
 
   handleSubmit(event) {
     //make axios call to Geolocation API
-    console.log('handleSubmit');
     event.preventDefault();
     this.props.loadLocation(this.state.location);
   }
