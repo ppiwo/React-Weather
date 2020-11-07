@@ -7,7 +7,8 @@ import {
   dayFull,
 } from './components/WeatherCard';
 import SearchBar from './components/SearchBar';
-import HourCards from './components/HourCards'
+import RenderCards from './components/RenderCards'
+import CardOptions from './components/CardOptions';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import axios from 'axios';
@@ -21,6 +22,7 @@ class App extends Component {
       lng: -87.6298,
     },
     cityState: 'Chicago, IL, USA',
+    cardOption: 'hourly'
   };
 
   componentDidMount() {
@@ -55,6 +57,10 @@ class App extends Component {
       });
   };
 
+  hourlyOptionHandler = () => this.setState({cardOption: 'hourly'})
+  tomorrowOptionHandler = () => this.setState({cardOption: 'tomorrow'})
+  weekOptionHandler = () => this.setState({cardOption: 'week'})
+
   render() {
     if (
       this.state.weatherInfo.daily === undefined ||
@@ -67,7 +73,8 @@ class App extends Component {
       <div className="App">
         <SearchBar loadLocation={this.loadLocation} />
         <div className="todayContainer">
-          <HourCards weatherData={this.state.weatherInfo.hourly} />
+          <CardOptions hourHandler={this.hourlyOptionHandler} tomorrowHandler={this.tomorrowOptionHandler} weekHandler={this.weekOptionHandler}/>
+          <RenderCards weatherData={this.state.weatherInfo} renderOption={this.state.cardOption} time={new Date} />
           <CurrentWeather
             day={dayFull(this.state.currentWeatherInfo.current.dt)}
             weather={this.state.currentWeatherInfo.current.weather[0].main}
