@@ -1,12 +1,14 @@
 import React from 'react';
 import HourCard from './HourCard';
 import WeekCard from './WeekCard';
-import Slider from './Slider'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import './layout/RenderCards.scss'
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/swiper.scss';
 
 export default function RenderCards(props) {
     let weatherData = props.weatherData;
@@ -45,9 +47,9 @@ export default function RenderCards(props) {
     }
 
     function hourCardData(){
-        let hoursLeftInDay = ((props.time.getHours() - 24) * -1);
+        let hoursToShow = 24;
         let hours = []
-        for (let i = 0; i <= hoursLeftInDay; i = i + 2){
+        for (let i = 0; i <= hoursToShow; i++){
             hours.push(i);
         }
         return hours;
@@ -56,50 +58,52 @@ export default function RenderCards(props) {
     function weekCardData(){
         let days = []
         for (let i = 0; i <= 7; i++){
-            console.log(i)
             days.push(i);
         }
         return days;
     }
 
-    if (props.renderOption === 'hourly'){
+    if (props.renderOption === 'today'){
     return (
         <div className="hour-card-slide-wrapper">
                 <Container>
-                                {/* <Slider */}
-                                {/* options={{
-                                    groupCells: true
-                                }}
-                                > */}
-                                    {hourCardData().map((hour) => {
-                                        return (
-                                            <HourCard time={unixToDateHour(dataMap[hour].time)} icon={dataMap[hour].icon} temp={dataMap[hour].temp} key={dataMap[hour].time} />
-                                        )
-                                    })}
-                                {/* </Slider> */}
-                    </Container>
+                    <Swiper
+                        spaceBetween={10}
+                        slidesPerView={4}
+                    >
+                        {hourCardData().map((hour) => {
+                            return (
+                                <SwiperSlide>
+                                    <HourCard time={unixToDateHour(dataMap[hour].time)} icon={dataMap[hour].icon} temp={dataMap[hour].temp} key={dataMap[hour].time} />
+                                </SwiperSlide>
+                            )})}
+                    </Swiper>        
+                </Container>
         </div>
     )
     }
         if (props.renderOption === 'week'){
             return (
-                <div>
+                <div className="week-card-slider-wrapper">
                         <Container>
-                            <Row className="justify-content-center">
+                            <Swiper
+                                spaceBetween={20}
+                                slidesPerView={1}
+                            >
                                 {weekCardData().map((day) => {
                                     return (
-                                    <Col xs={4}>
-                                        <WeekCard 
-                                            day={unixToDateDay(weatherData.daily[day].dt)} 
-                                            icon={weatherData.daily[day].weather[0].icon} 
-                                            tempLo={weatherData.daily[day].temp.min} 
-                                            tempHi={weatherData.daily[day].temp.max} 
-                                            key={weatherData.daily[day].dt}
-                                        />
-                                    </Col>
+                                        <SwiperSlide>
+                                            <WeekCard 
+                                                day={unixToDateDay(weatherData.daily[day].dt)} 
+                                                icon={weatherData.daily[day].weather[0].icon} 
+                                                tempLo={weatherData.daily[day].temp.min} 
+                                                tempHi={weatherData.daily[day].temp.max} 
+                                                key={weatherData.daily[day].dt}
+                                            />
+                                        </SwiperSlide>
                                 )
                                 })}
-                            </Row>
+                            </Swiper>
                         </Container>
                 </div>
             )

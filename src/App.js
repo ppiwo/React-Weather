@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.css'
 import CurrentWeather from './components/CurrentWeather';
-import {
-  WeatherCard
-} from './components/WeatherCard';
-import SearchBar from './components/SearchBar';
 import RenderCards from './components/RenderCards'
 import CardOptions from './components/CardOptions';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './components/layout/Header'
+import LoadingSpinner from './components/LoadingSpinner'
+import DrawerCart from './components/drawer-cart/DrawerCart'
 
 import axios from 'axios';
 
 class App extends Component {
   state = {
+    isLoading: true,
     weatherInfo: [],
     hourlyInfo: [],
     location: {
@@ -20,14 +20,15 @@ class App extends Component {
       lng: -87.6298,
     },
     cityState: 'Chicago, IL, USA',
-    cardOption: 'week'
+    cardOption: 'today'
   };
 
   componentDidMount() {
     this.loadData();
   }
 
-  loadData() {
+  async loadData() {
+    this.setState({isLoading: true})
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.location.lat}&lon=${this.state.location.lng}&units=imperial&exclude=minutely,hourly,daily&appid=886705b4c1182eb1c69f28eb8c520e20`
@@ -38,7 +39,7 @@ class App extends Component {
     .get(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.location.lat}&lon=${this.state.location.lng}&units=imperial&exclude=minutely&appid=886705b4c1182eb1c69f28eb8c520e20`
     )
-    .then((res) => this.setState({ weatherInfo: res.data }));
+    .then((res) => this.setState({ weatherInfo: res.data, isLoading: false }));
   }
 
   loadLocation = (location) => {
@@ -55,7 +56,7 @@ class App extends Component {
       });
   };
 
-  hourlyOptionHandler = () => this.setState({cardOption: 'hourly'})
+  hourlyOptionHandler = () => this.setState({cardOption: 'today'})
   weekOptionHandler = () => this.setState({cardOption: 'week'})
 
   render() {
@@ -68,7 +69,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <SearchBar loadLocation={this.loadLocation} />
+        <div className="bg" />
+        <LoadingSpinner isLoading={this.state.isLoading} />
+        {/* <SearchBar loadLocation={this.loadLocation} /> */}
+        <Header location={this.state.cityState} />
         <CurrentWeather
             // day={dayFull(this.state.currentWeatherInfo.current.dt)}
             weather={this.state.currentWeatherInfo.current.weather[0].main}
@@ -83,37 +87,9 @@ class App extends Component {
             sunRise={this.state.currentWeatherInfo.current.sunrise}
             sunSet={this.state.currentWeatherInfo.current.sunset}
           />
-        <div className="todayContainer">
-          <CardOptions hourHandler={this.hourlyOptionHandler} weekHandler={this.weekOptionHandler}/>
-          <RenderCards weatherData={this.state.weatherInfo} renderOption={this.state.cardOption} time={new Date()} />
-        </div>
-        <div className="weatherCardContainer">
-          <WeatherCard
-            // day={dayAbbreviation(this.state.weatherInfo.daily[1].dt)}
-            weather={this.state.weatherInfo.daily[1].weather[0].main}
-            high={this.state.weatherInfo.daily[1].temp.max}
-            low={this.state.weatherInfo.daily[1].temp.min}
-            location={this.state.location}
-          />
-          <WeatherCard
-            // day={dayAbbreviation(this.state.weatherInfo.daily[2].dt)}
-            weather={this.state.weatherInfo.daily[2].weather[0].main}
-            high={this.state.weatherInfo.daily[2].temp.max}
-            low={this.state.weatherInfo.daily[2].temp.min}
-          />
-          <WeatherCard
-            // day={dayAbbreviation(this.state.weatherInfo.daily[3].dt)}
-            weather={this.state.weatherInfo.daily[3].weather[0].main}
-            high={this.state.weatherInfo.daily[3].temp.max}
-            low={this.state.weatherInfo.daily[3].temp.min}
-          />
-          <WeatherCard
-            // day={dayAbbreviation(this.state.weatherInfo.daily[4].dt)}
-            weather={this.state.weatherInfo.daily[4].weather[0].main}
-            high={this.state.weatherInfo.daily[4].temp.max}
-            low={this.state.weatherInfo.daily[4].temp.min}
-          />
-        </div>
+        <CardOptions hourHandler={this.hourlyOptionHandler} weekHandler={this.weekOptionHandler} cardOption={this.state.cardOption}/>
+        <RenderCards weatherData={this.state.weatherInfo} renderOption={this.state.cardOption} time={new Date()} />
+        <DrawerCart/>
       </div>
     );
   }

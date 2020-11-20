@@ -5,11 +5,11 @@ import './Header.css';
 
 import React from 'react';
 
-export default function navbar() {
+export default function navbar(props) {
   return (
     <div>
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+      <Navbar expand="lg">
+        <Navbar.Brand className="mx-auto" href="#home">{props.location}</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

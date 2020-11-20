@@ -1,0 +1,40 @@
+.drawer-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    background-color: white;
+    border: 1px transparent solid;
+    border-radius: 25px;
+    transform: translate(-7px, 380px);
+    height: 500px;
+    transition: all .25s ease-in-out;
+    width: 98%;
+}
+
+.drawer-wrapper.active {
+    transform: translate(-7px, 100px);
+}
+
+.drawer-wrapper.active img {
+    transform: rotate(180deg) translateY(-5px);
+}
+
+.drawer-wrapper * {
+    color: black;
+}
+
+.drawer-wrapper .img-wrapper {
+    height: 20px;
+    width: 50px;
+    margin: auto;
+    transform: translateY(-5px);
+}
+
+.drawer-wrapper .divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.449);
+}

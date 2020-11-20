@@ -1,0 +1,14 @@
+.weather-option {
+    background-color: transparent;
+    color: white;
+    font-weight: 700;
+    border: none;
+}
+
+.weather-option:focus {
+    outline: none;
+}
+
+.weather-option.weather-active {
+    color: orchid;
+}
