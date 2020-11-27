@@ -32,13 +32,13 @@ class App extends Component {
     this.setState({isLoading: true})
     axios
       .get(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.location.lat}&lon=${this.state.location.lng}&units=imperial&exclude=minutely,hourly,daily&appid=886705b4c1182eb1c69f28eb8c520e20`
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.location.lat}&lon=${this.state.location.lng}&units=imperial&exclude=minutely,hourly,daily&appid=7b43afb8e983d5dcfce910df123df16b`
       )
       .then((res) => this.setState({ currentWeatherInfo: res.data }));
 
     axios
     .get(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.location.lat}&lon=${this.state.location.lng}&units=imperial&exclude=minutely&appid=886705b4c1182eb1c69f28eb8c520e20`
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.location.lat}&lon=${this.state.location.lng}&units=imperial&exclude=minutely&appid=7b43afb8e983d5dcfce910df123df16b`
     )
     .then((res) => this.setState({ weatherInfo: res.data, isLoading: false }));
   }
@@ -74,7 +74,7 @@ class App extends Component {
         {/* <SearchBar loadLocation={this.loadLocation} /> */}
         <Header location={this.state.cityState} />
         <CurrentWeather
-            // day={dayFull(this.state.currentWeatherInfo.current.dt)}
+            day={convertUnixToDateTime(this.state.currentWeatherInfo.current.dt)}
             weather={this.state.currentWeatherInfo.current.weather[0].main}
             currentTemp={this.state.currentWeatherInfo.current.temp}
             location={this.state.location}

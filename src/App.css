@@ -9,3 +9,10 @@
 body * {
     color: white;
 }
+
+.today-date, .feels-like {
+    font-size: .75rem;
+    color: lightgray;
+}
+
+.current-temp-wrapper h3 { font-size: 4rem; }

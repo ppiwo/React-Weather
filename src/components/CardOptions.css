@@ -1,7 +1,7 @@
 .weather-option {
     background-color: transparent;
-    color: white;
-    font-weight: 700;
+    color: lightgray;
+    font-weight: 500;
     border: none;
 }
 
@@ -10,5 +10,10 @@
 }
 
 .weather-option.weather-active {
-    color: orchid;
+    color: white;
+    font-weight: 700;
+}
+
+.card-options-wrapper {
+    border-bottom: 1px solid rgba(211, 211, 211, .2);
 }
