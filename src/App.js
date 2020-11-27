@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/layout/Header'
 import LoadingSpinner from './components/LoadingSpinner'
 import DrawerCart from './components/drawer-cart/DrawerCart'
+import SetBg from './components/SetBg'
 
 import axios from 'axios';
 
@@ -19,7 +20,7 @@ class App extends Component {
       lat: 41.8781,
       lng: -87.6298,
     },
-    cityState: 'Chicago, IL, USA',
+    cityState: 'Chicago, IL',
     cardOption: 'today'
   };
 
@@ -69,7 +70,6 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="bg" />
         <LoadingSpinner isLoading={this.state.isLoading} />
         {/* <SearchBar loadLocation={this.loadLocation} /> */}
         <Header location={this.state.cityState} />

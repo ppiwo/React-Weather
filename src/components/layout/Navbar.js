@@ -8,8 +8,16 @@ import React from 'react';
 export default function navbar(props) {
   return (
     <div>
-      <Navbar expand="lg">
-        <Navbar.Brand className="mx-auto" href="#home">{props.location}</Navbar.Brand>
+      <Navbar bg="dark" expand="lg">
+        <Navbar.Brand 
+          className="mx-auto" 
+          href="#home"
+          >
+            <div className="location-wrapper">
+            <span className="city">{props.location.split(',')[0]},</span>
+            <span className="state">{props.location.split(',')[1]}</span>
+            </div>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

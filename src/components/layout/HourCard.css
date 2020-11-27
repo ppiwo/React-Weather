@@ -1,8 +1,8 @@
-.hour-card-wrapper {
-    background-color: grey;
+.card-contents {
+    background-color: rgba(133, 133, 133, .1);
     margin: 5px;
-    border: 0px solid grey;
-    border-radius: 5px;
+    border: 1px solid rgb(255, 255, 255, .2);
+    border-radius: 50px;
     padding: 10px;
 }
 
