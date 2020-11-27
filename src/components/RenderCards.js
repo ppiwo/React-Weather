@@ -66,10 +66,10 @@ export default function RenderCards(props) {
     if (props.renderOption === 'today'){
     return (
         <div className="hour-card-slide-wrapper">
-                <Container>
+                <Container className="pl-1 pr-0">
                     <Swiper
-                        spaceBetween={10}
-                        slidesPerView={4}
+                        spaceBetween={60}
+                        slidesPerView={5}
                     >
                         {hourCardData().map((hour) => {
                             return (
@@ -85,10 +85,10 @@ export default function RenderCards(props) {
         if (props.renderOption === 'week'){
             return (
                 <div className="week-card-slider-wrapper">
-                        <Container>
+                        <Container className="pl-1 pr-1">
                             <Swiper
-                                spaceBetween={20}
-                                slidesPerView={1}
+                                spaceBetween={60}
+                                slidesPerView={5}
                             >
                                 {weekCardData().map((day) => {
                                     return (
