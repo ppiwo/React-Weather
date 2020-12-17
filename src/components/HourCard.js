@@ -10,12 +10,12 @@ export default function HourCard(props) {
     return (
         <div className="hour-card-wrapper text-center">
             <span className="hour-card-time" xs={12}>{props.time.split(':')[0] + ' ' + props.time.split(' ')[1]}</span>
-            <Container className="card-contents">
+            <div className="card-contents">
                 <Row className="justify-content-center">
-                    <Col className="hour-card-img px-0 py-1" xs={12}><img src={`http://openweathermap.org/img/wn/${props.icon}.png`} alt="weather icon"/></Col>
-                    <Col className="hour-card-temp px-0 py-1" xs={12}>{tempRounded}&deg;</Col>
+                    <Col className="hour-card-img px-0 pb-1" xs={12}><img src={`http://openweathermap.org/img/wn/${props.icon}.png`} alt="weather icon"/></Col>
+                    <Col className="hour-card-temp px-0 pt-1" xs={12}>{tempRounded}&deg;</Col>
                 </Row>
-            </Container>
+            </div>
         </div>
     )
 }

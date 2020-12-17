@@ -11,12 +11,12 @@ export default function WeekCard(props) {
     return (
         <div className="week-card-wrapper text-center">
             <span className="week-card-day" xs={12}>{props.day}</span>
-            <Container className="card-contents">
+            <div className="card-contents">
                 <Row className="justify-content-center">
-                    <Col className="week-card-img px-0 py-1" xs={12}><img src={`http://openweathermap.org/img/wn/${props.icon}.png`} alt="weather icon" /></Col>
-                    <Col className="week-card-temp px-0 py-1" xs={12}><span className="lo-temp">{lowTempRounded}&deg;</span> / <span className="hi-temp">{highTempRounded}&deg;</span></Col>
+                    <Col className="week-card-img px-0 pb-1" xs={12}><img src={`http://openweathermap.org/img/wn/${props.icon}.png`} alt="weather icon" /></Col>
+                    <Col className="week-card-temp px-0 pt-1" xs={12}><span className="lo-temp">{lowTempRounded}&deg;</span> / <span className="hi-temp">{highTempRounded}&deg;</span></Col>
                 </Row>
-            </Container>
+            </div>
         </div>
     )
 }

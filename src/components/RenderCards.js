@@ -85,7 +85,7 @@ export default function RenderCards(props) {
         if (props.renderOption === 'week'){
             return (
                 <div className="week-card-slider-wrapper">
-                        <Container className="pl-1 pr-1">
+                        <Container className="pl-1 pr-0">
                             <Swiper
                                 spaceBetween={60}
                                 slidesPerView={5}

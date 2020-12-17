@@ -6,8 +6,7 @@ import CardOptions from './components/CardOptions';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/layout/Header'
 import LoadingSpinner from './components/LoadingSpinner'
-import DrawerCart from './components/drawer-cart/DrawerCart'
-import SetBg from './components/SetBg'
+import BottomDrawer from './components/bottom_drawer/BottomDrawer'
 
 import axios from 'axios';
 
@@ -89,7 +88,7 @@ class App extends Component {
           />
         <CardOptions hourHandler={this.hourlyOptionHandler} weekHandler={this.weekOptionHandler} cardOption={this.state.cardOption}/>
         <RenderCards weatherData={this.state.weatherInfo} renderOption={this.state.cardOption} time={new Date()} />
-        <DrawerCart/>
+        <BottomDrawer weatherData={this.state.weatherInfo}/>
       </div>
     );
   }
