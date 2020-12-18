@@ -69,6 +69,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <div className="bg"/>
         <LoadingSpinner isLoading={this.state.isLoading} />
         {/* <SearchBar loadLocation={this.loadLocation} /> */}
         <Header location={this.state.cityState} />

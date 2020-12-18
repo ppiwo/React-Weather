@@ -1,6 +1,8 @@
-.hour-card-slide-wrapper, .week-card-slider-wrapper {
+.card-slide-wrapper {
+    border: 1px solid rgba(211, 211, 211, .2); border-left: none; border-right: none; padding: 10px 0;
     .hour-card-wrapper, .week-card-wrapper {
         width: 85px;
         margin: 0 5px;
+        .card-contents { height: 128px;}
     }
 }

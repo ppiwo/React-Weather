@@ -17,7 +17,7 @@ export default function CardOptions(props) {
     // hourly
     // week
     return (
-        <Container className="mb-3 card-options-wrapper pb-3" fluid='xs'>
+        <Container className="mb-3 card-options-wrapper pb-3">
             <Row className="justify-content-start text-left">
                 <Col className="ml-2" xs={2}><button className={`weather-option${appendActive('today')}`}  onClick={props.hourHandler}>Today</button></Col>
                 <Col className="pl-0" xs={2}><button className={`weather-option${appendActive('week')}`}  onClick={props.weekHandler}>Week</button></Col>

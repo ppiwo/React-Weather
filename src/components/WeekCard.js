@@ -9,8 +9,8 @@ export default function WeekCard(props) {
     let highTempRounded = Math.round(props.tempHi);
 
     return (
-        <div className="week-card-wrapper text-center">
-            <span className="week-card-day" xs={12}>{props.day}</span>
+        <div className="week-card-wrapper text-center pb-3">
+            <span className="week-card-day" xs={12}>{props.day.substring(0,3)}</span>
             <div className="card-contents">
                 <Row className="justify-content-center">
                     <Col className="week-card-img px-0 pb-1" xs={12}><img src={`http://openweathermap.org/img/wn/${props.icon}.png`} alt="weather icon" /></Col>

@@ -65,7 +65,7 @@ export default function RenderCards(props) {
 
     if (props.renderOption === 'today'){
     return (
-        <div className="hour-card-slide-wrapper">
+        <div className="card-slide-wrapper">
                 <Container className="pl-1 pr-0">
                     <Swiper
                         spaceBetween={60}
@@ -84,7 +84,7 @@ export default function RenderCards(props) {
     }
         if (props.renderOption === 'week'){
             return (
-                <div className="week-card-slider-wrapper">
+                <div className="card-slider-wrapper">
                         <Container className="pl-1 pr-0">
                             <Swiper
                                 spaceBetween={60}

@@ -32,12 +32,7 @@ export default class DrawerCart extends Component {
             return (
                 <div className={drawerClassName} onClick={toggleDrawer}>
                     <Container fluid>
-                        <Row>
-                            <Col xs={12}>
-                                <div className="img-wrapper">
-                                    <img src={chevUp} alt="chevron up"></img>
-                                </div>
-                            </Col>
+                        <Row className="text-center">
                                 <div className="divider"></div>
                                 <Col className="" xs={6}>
                                     <p className="font-weight-bold mb-0">Sunrise</p>

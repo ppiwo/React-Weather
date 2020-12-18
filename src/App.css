@@ -1,13 +1,29 @@
-.bg {
-    background-image: url(./images/backgrounds/stars.jpg);
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    opacity: 90%;
-}
+
 
 body * {
     color: white;
+}
+
+body {
+    background-color: rgb(39, 39, 39) !important;
+    height: 100vh;
+}
+
+.bg { 
+    background: url(./images/backgrounds/giphy.gif) no-repeat center center fixed; 
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    filter: blur(1px);
+    -webkit-filter: blur(1px);
+    opacity: 40%;
+  }
+
+html::before {
+    background-color: red;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
 }
 
 .today-date, .feels-like {

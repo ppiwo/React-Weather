@@ -13,7 +13,7 @@ export default function HourCard(props) {
             <div className="card-contents">
                 <Row className="justify-content-center">
                     <Col className="hour-card-img px-0 pb-1" xs={12}><img src={`http://openweathermap.org/img/wn/${props.icon}.png`} alt="weather icon"/></Col>
-                    <Col className="hour-card-temp px-0 pt-1" xs={12}>{tempRounded}&deg;</Col>
+                    <Col className="hour-card-temp px-0 p-1" xs={12}>{tempRounded}&deg;</Col>
                 </Row>
             </div>
         </div>
